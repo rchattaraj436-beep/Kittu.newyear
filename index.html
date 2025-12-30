@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy New Year Aayushi ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+  min-height:100vh;
+  background:radial-gradient(circle at top,#2b1055,#000);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-family:'Poppins',sans-serif;
+  color:#fff;
+  overflow-x:hidden;
+}
+
+/* OPEN SCREEN */
+.open-text{
+  font-size:1.4rem;
+  text-align:center;
+  animation:blink 1.5s infinite;
+  cursor:pointer;
+  padding:30px;
+}
+
+@keyframes blink{
+  0%,100%{opacity:1}
+  50%{opacity:.4}
+}
+
+/* MAIN CARD */
+.container{
+  display:none;
+  width:94%;
+  max-width:390px;
+  background:rgba(255,255,255,0.08);
+  backdrop-filter:blur(10px);
+  border-radius:22px;
+  overflow:hidden;
+  box-shadow:0 25px 50px rgba(0,0,0,.6);
+  text-align:center;
+  animation:fadeIn 2s ease forwards;
+}
+
+@keyframes fadeIn{
+  from{opacity:0;transform:translateY(20px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+.container img{
+  width:100%;
+  height:65vh;
+  object-fit:cover;
+}
+
+h1{
+  font-family:'Great Vibes',cursive;
+  font-size:2.8em;
+  color:#ff9ecd;
+  margin:15px 10px 5px;
+}
+
+h2{
+  font-size:1.1em;
+  font-weight:300;
+  color:#ddd;
+  margin-bottom:10px;
+}
+
+.message{
+  font-size:.95em;
+  color:#eee;
+  padding:10px 20px;
+  min-height:140px;
+  line-height:1.6;
+}
+
+.signature{
+  color:#ff9ecd;
+  font-weight:600;
+  margin:15px 0 25px;
+}
+
+/* TYPING CURSOR */
+.cursor{
+  display:inline-block;
+  animation:cursorBlink 1s infinite;
+}
+
+@keyframes cursorBlink{
+  0%,50%,100%{opacity:1}
+  25%,75%{opacity:0}
+}
+
+/* CANDLE LIGHT */
+.candle{
+  position:fixed;
+  bottom:0;
+  width:100%;
+  height:200px;
+  background:radial-gradient(circle at center,#ffb34733,#000);
+  pointer-events:none;
+}
+
+/* HEARTS */
+.heart{
+  position:fixed;
+  top:-10px;
+  font-size:20px;
+  color:#ffdde1;
+  animation:fall linear infinite;
+}
+
+@keyframes fall{
+  to{transform:translateY(110vh)}
+}
+</style>
+</head>
+
+<body>
+
+<div class="open-text" id="openText">
+  💖 Tap anywhere to open my heart 💖
+</div>
+
+<div class="container" id="content">
+  <img src="c:\Users\Sougata Chattaraj\OneDrive\Pictures\Love.jpeg" alt="Sougata & Aayushi">
+
+  <h1>Happy New Year Aayushi ❤️</h1>
+  <h2>My Love, My Forever</h2>
+
+  <div class="message" id="typing"></div>
+
+  <div class="signature">
+    — Yours always,<br>Sougata 💖
+  </div>
+</div>
+
+<div class="candle"></div>
+
+<script>
+/* OPEN SCREEN */
+document.body.addEventListener("click", () => {
+  document.getElementById("openText").style.display="none";
+  document.getElementById("content").style.display="block";
+  startTyping();
+  createHearts();
+},{once:true});
+
+/* TYPING TEXT */
+const text = `As this New Year begins,
+I just want you to know one thing…
+
+You are the most beautiful part of my life.
+Every smile of yours lights up my world,
+and every moment with you feels magical.
+
+In 2026 and forever,
+I promise to love you deeper,
+hold you tighter,
+and walk beside you in every dream we chase together.
+
+You are my today,
+my tomorrow,
+and my always ❤️❤️
+
+I LOVE YOU KITTU❤️❤️`;
+
+let i=0;
+const speed=75;
+const typing=document.getElementById("typing");
+
+function startTyping(){
+  if(i<text.length){
+    typing.innerHTML=text.substring(0,i+1)+"<span class='cursor'>|</span>";
+    i++;
+    setTimeout(startTyping,speed);
+  }else{
+    typing.innerHTML=text;
+  }
+}
+
+/* HEART FALL */
+function createHearts(){
+  setInterval(()=>{
+    const heart=document.createElement("div");
+    heart.className="heart";
+    heart.innerHTML="❤️";
+    heart.style.left=Math.random()*100+"vw";
+    heart.style.animationDuration=(Math.random()*4+4)+"s";
+    document.body.appendChild(heart);
+    setTimeout(()=>heart.remove(),7000);
+  },250);
+}
+</script>
+
+</body>
+</html>
